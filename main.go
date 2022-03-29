@@ -2,14 +2,11 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 
+	"github.com/CryptocurrencyCabal/btcutil"
 	"github.com/blockcypher/gobcy"
 )
-
-type bal struct {
-	content bool
-	balance int
-}
 
 func main() {
 
@@ -24,7 +21,11 @@ func main() {
 	fmt.Println("name: ", balance.Wallet.Name)
 	fmt.Println("balance: ", balance.Balance)
 	fmt.Println("final balance: ", balance.FinalBalance)
-	
+
 	result, _ := balance.FinalBalance.MarshalJSON()
-	fmt.Println("wanted balance: ", string(result))
+
+	fresult, _ := strconv.ParseFloat(string(result), 64)
+	
+	amount := btcutil.Amount(fresult)
+	fmt.Println("amount: ", amount)
 }
