@@ -1,0 +1,6 @@
+# github.com/blockcypher/gobcy v2.0.1+incompatible
+## explicit
+github.com/blockcypher/gobcy
+# github.com/btcsuite/btcd v0.22.0-beta
+## explicit
+github.com/btcsuite/btcd/btcec
