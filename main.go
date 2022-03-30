@@ -57,10 +57,10 @@ func main() {
 
 	// validator to define whether a transaction was confirmed
 	// [0, 1] 1 for confirmed transaction, otherwise 0
-	// txConfig, errTxConfig := bc.GetTXConf(transactionHash)
-	// if errTxConfig != nil {fmt.Println("tx configuration: ", errTxConfig)}
-	// fmt.Println("txConfig: ", txConfig)
-	// fmt.Println()
+	txConfig, errTxConfig := bc.GetTXConf(transactionHash)
+	if errTxConfig != nil {fmt.Println("tx configuration: ", errTxConfig)}
+	fmt.Println("txConfig: ", txConfig)
+	fmt.Println()
 
 	// create a new btc transaction 
 	var inAddr = "mhNVRVjgh9bUBuZQ5dpMAhRSF2nQUBQsws"
@@ -86,4 +86,19 @@ func main() {
 	fmt.Println()
 
 	fmt.Println("transaction hash: ", sk.Trans.Hash)
+	fmt.Println()
+
+	// get the chain 
+	chain, errChain := bc.GetChain()
+	if errChain != nil {fmt.Println("chain error: ", errChain)}
+
+	fmt.Println("chain: ", chain)
+	fmt.Println("chain height: ", chain.Height)
+	fmt.Println()
+
+	block, errBlock := bc.GetBlock(chain.Height, sk.Trans.BlockHash, nil)
+	if errBlock != nil {fmt.Println("error block: ", errBlock)}
+
+	fmt.Println("block: ", block)
+	fmt.Println()
 }
