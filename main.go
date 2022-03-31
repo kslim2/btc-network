@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-
+	
 	bc := gobcy.API{}
 	bc.Token = "21044813c9c04e8499d5726f8d4721e0"
 	bc.Coin = "btc" //options: "btc","bcy","ltc","doge","eth"
